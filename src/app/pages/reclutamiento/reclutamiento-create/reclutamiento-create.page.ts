@@ -21,7 +21,7 @@ export class ReclutamientoCreatePage implements OnInit {
 
   ngOnInit() {
     this.alumnoForm = this.fb.group({
-      ruc: ['', [Validators.required]],
+      ruc: ['', [Validators.required,  Validators.pattern(/^\d{11}$/) ]],
       fecha: ['', [Validators.required]],
       numhijos: ['', [Validators.required]],
       sueldo: ['', [Validators.required]],

@@ -28,7 +28,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/gastos/gastos-inicio/gastos-inicio.module').then( m => m.GastosInicioPageModule)
   },
   {
-    path: 'gastos-edit',
+    path: 'gastos-edit/:id',
     loadChildren: () => import('./pages/gastos/gastos-edit/gastos-edit.module').then( m => m.GastosEditPageModule)
   },
 ];

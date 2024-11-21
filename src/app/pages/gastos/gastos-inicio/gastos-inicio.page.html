@@ -1,13 +1,60 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>gastos-inicio</ion-title>
+    <ion-title>Gastos-create</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">gastos-inicio</ion-title>
+      <ion-title size="large">Gastos-create</ion-title>
     </ion-toolbar>
+
   </ion-header>
+  <ion-searchbar
+  placeholder="Buscar por categoria"
+  (ionInput)="filtarGasto($event)"
+></ion-searchbar>
+  <ion-card>
+    <ion-card-header>
+
+      <ion-card-title>Crear Gasto</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <form [formGroup]="alumnoForm" (ngSubmit)="save()">
+        <ion-list>
+          <ion-item>
+            <ion-input type="text" formControlName="titulo" placeholder="Ingresar su titulo" label="Titulo"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="number" formControlName="monto" placeholder="Ingresar su monto" label="MOnto"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input type="text" formControlName="categoria" placeholder="Ingresar su categoria" label="Categoria"></ion-input>
+          </ion-item>
+
+
+            <ion-button expand="block" type="submit" [disabled]="!alumnoForm.valid"  >
+              Registrar
+            </ion-button>
+
+        </ion-list>
+      </form>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-list>
+    <ion-item *ngFor="let contacto of gastos_filtrados">
+      <ion-label>
+        <h2>ID: {{ contacto.id }}</h2>
+        <p>MOnto: {{ contacto.monto }}</p>
+        <p>Titulo: {{ contacto.titulo }}</p>
+        <p>Categoria: {{ contacto.categoria }}</p>
+      </ion-label>
+      <ion-button color="primary" [routerLink]="['/gastos-edit/', contacto.id]">Editar</ion-button>
+      <ion-button color="danger" (click)="eliminarContacto(contacto.id)">Eliminar</ion-button>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
