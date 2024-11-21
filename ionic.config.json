@@ -1,0 +1,7 @@
+{
+  "name": "Examen_ReyesRiveros_fronted",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
